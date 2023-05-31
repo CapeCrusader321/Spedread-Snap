@@ -1,9 +1,9 @@
 name: spedread
 base: core22
 adopt-info: spedread
-summary: Lightweight Open Source Music player
+summary: GTK speed reading software
 description: |
-  Audacious is a Lightweight Gtk + Music Player.
+  GTK speed reading software: Read like a speedrunner.
 grade: stable
 confinement: strict
 compression: lzo
