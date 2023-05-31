@@ -3,7 +3,7 @@ base: core22
 adopt-info: spedread
 summary: GTK speed reading software: Read like a speedrunner!
 description: |
-  GTK speed reading software.
+  GTK speed reading software !
 grade: stable
 confinement: strict
 compression: lzo
