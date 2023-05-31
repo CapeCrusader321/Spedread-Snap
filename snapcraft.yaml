@@ -3,7 +3,8 @@ base: core22
 adopt-info: spedread
 summary: GTK speed reading software: Read like a speedrunner!
 description: |
-  This program will show one word at a time rapidly to allow focusing on the general idea rather than single words along with less eye movements 
+   This program will show one word at a time rapidly to allow focusing on 
+   the general idea rather than single words along with less eye movements 
 grade: stable
 confinement: strict
 compression: lzo
