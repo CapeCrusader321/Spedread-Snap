@@ -44,7 +44,7 @@ parts:
     source: https://github.com/Darazaki/Spedread.git
     source-tag: v2.3.4
     plugin: meson
-    parse-info: [usr/share/metainfo/com.github.Darazaki.Spedread.appdata.xml.in]
+    parse-info: [usr/share/metainfo/com.github.Darazaki.Spedread.appdata.xml]
     meson-parameters:
       - --prefix=/snap/spedread/current/usr
     override-pull: |
