@@ -1,9 +1,6 @@
 name: spedread
 base: core22
 adopt-info: spedread
-summary: GTK speed reading software
-description: |
-  GTK speed reading software: Read like a speedrunner.
 grade: stable
 confinement: strict
 compression: lzo
@@ -32,6 +29,7 @@ apps:
       - bluez
       - audio-playback
       - network
+      - network-bind
       - network-status
       - optical-drive
       - removable-media
