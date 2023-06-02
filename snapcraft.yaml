@@ -1,9 +1,6 @@
 name: spedread
 base: core22
 adopt-info: spedread
-summary: GTK speed reading software
-description: |
-  GTK speed reading software: Read like a speedrunner.
 grade: stable
 confinement: strict
 compression: lzo
@@ -18,17 +15,14 @@ slots:
     bus: session
     name: com.github.Darazaki.Spedread
 
-environment:
-  # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
-
 apps:
   spedread:
     command: usr/bin/spedread
     extensions: [gnome]
+    environment:
+      PYTHONPATH: $PYTHONPATH:${SNAP}/usr/lib/python3/dist-packages
     plugs:
       - home
-      - raw-usb
       - bluez
       - audio-playback
       - network
@@ -43,15 +37,13 @@ apps:
 parts:
   spedread:
     source: https://github.com/Darazaki/Spedread.git
-    source-tag: v2.3.4
     plugin: meson
-    parse-info: [usr/share/metainfo/com.github.Darazaki.Spedread.appdata.xml]
+    parse-info: [usr/share/appdata/com.github.Darazaki.Spedread.appdata.xml]
     meson-parameters:
       - --prefix=/snap/spedread/current/usr
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
-      sed -e 's|Icon=com.github.Darazaki.Spedread|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.Darazaki.Spedread.svg|' -i data/com.github.Darazaki.Spedread.desktop.in
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
