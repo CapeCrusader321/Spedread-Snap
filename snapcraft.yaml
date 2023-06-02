@@ -15,13 +15,14 @@ slots:
     bus: session
     name: com.github.Darazaki.Spedread
 
+environment:
+  # WORKAROUND: Add python modules in Snap to search path
+  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
+ 
 apps:
   spedread:
     command: usr/bin/spedread
     extensions: [gnome]
-    environment:
-      PYTHONPATH: $PYTHONPATH:${SNAP}/usr/lib/python3/dist-packages
-      HOME: $SNAP_USER_COMMON
     plugs:
       - home
       - bluez
@@ -42,9 +43,10 @@ parts:
     parse-info: [usr/share/appdata/com.github.Darazaki.Spedread.appdata.xml]
     meson-parameters:
       - --prefix=/snap/spedread/current/usr
+      - -Dadw_1_2=true
     override-pull: |
       craftctl default
-      craftctl set version=$(git describe --tags --abbrev=0)
+      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
